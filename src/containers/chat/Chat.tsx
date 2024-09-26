@@ -81,7 +81,7 @@ export const Chat = () => {
                     <div className="chat-container w-[795px] shadow-SM">
                         <div className="chat-area p-6">
                             <div className="flex justify-center items-center">{showDefaultCard && <DefaultCard />}</div>
-                            <div className="chat-history space-y-4">
+                            <div className="chat-history">
                                 {chatHistory.map((qa, index) => (
                                     <div key={index} className="chat-message p-4 rounded-lg flex flex-col gap-1">
                                         <div className="flex items-start mb-2"><p className="text-gray-700 gap-[5px]"><strong className="flex">You:</strong><div className="bg-slate-100 rounded-2xl p-3 mt-3 min-w-[75px] flex justify-center items-center">{qa.question}</div></p></div>
