@@ -7,6 +7,8 @@ const ProfileButton = () => {
 
     const handleLogOut = useLogout();
     const token = useSelector((state: any) => state.auth.token);
+    console.log("token",token);
+    
 
     return (
         <DropdownMenu>

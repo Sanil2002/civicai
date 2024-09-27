@@ -5,11 +5,12 @@ import { ChatNavbar } from "../../components/ui/chat/ChatNavbar"
 // import { ChatSidebar } from "../../components/chat/ChatSidebar"
 import { QuestionAnswer } from "../../lib/QuestionAnswer"
 import { chatAi } from "../../services/apiServices/apis/api"
+import { useParams } from "react-router-dom"
 // import { Loader } from "../../components/atom/Chat/Loader"
 // import { BotMessageSquare, MessageCircleQuestion } from "lucide-react"
 
 export const Chat = () => {
-
+    const { question } = useParams();
     const [inputValue, setInputValue] = useState<string>('');
     const [chatHistory, setChatHistory] = useState<QuestionAnswer[]>([]);
     const [showDefaultCard, setShowDefaultCard] = useState<boolean>(true);
@@ -20,8 +21,7 @@ export const Chat = () => {
         if (storedChatHistory) {
             setChatHistory(JSON.parse(storedChatHistory));
             setShowDefaultCard(false);
-        }
-    }, []);
+    }}, []);
 
     useEffect(() => {
         if (chatHistory.length > 0) {
@@ -30,9 +30,12 @@ export const Chat = () => {
         }
     }, [chatHistory]);
 
-    // const handleQuestionClick = (question: string) => {
-    //     setInputValue(question);
-    // };
+    useEffect(() => {
+        if (question) {
+            setInputValue(question); 
+            handleSendClick(); 
+        }
+    }, [question]);
 
     const handleSendClick = async () => {
         setLoading(true);
