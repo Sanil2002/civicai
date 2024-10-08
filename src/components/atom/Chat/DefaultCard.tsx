@@ -27,7 +27,7 @@ export const DefaultCard = () => {
                         <li className="bg-gray-100 p-3 rounded-lg text-sm">
                             "Explain about NCS?"
                         </li>
-                        <li className="bg-gray-100 p-3 rounded-lg text-sm">
+                        <li className="sm:flex bg-gray-100 p-3 rounded-lg text-sm hidden">
                             "Got any creative ideas for how to use this site?"
                         </li>
                         <li className="bg-gray-100 p-3 rounded-lg text-sm">
@@ -48,7 +48,7 @@ export const DefaultCard = () => {
                         </svg>
                     </div>
                     <ul className="space-y-2">
-                        <li className="bg-gray-100 p-3 rounded-lg text-sm">
+                        <li className="bg-gray-100 p-3 rounded-lg text-sm hidden sm:flex">
                             "Remembers what user said earlier in the conversation."
                         </li>
                         <li className="bg-gray-100 p-3 rounded-lg text-sm">
@@ -74,11 +74,11 @@ export const DefaultCard = () => {
                         <li className="bg-gray-100 p-3 rounded-lg text-sm">
                             "May occasionally generate incorrect information."
                         </li>
-                        <li className="bg-gray-100 p-3 rounded-lg text-sm">
+                        <li className="bg-gray-100 p-3 rounded-lg text-sm hidden sm:flex">
                             "May occasionally produce harmful instructions or biased content."
                         </li>
-                        <li className="bg-gray-100 p-3 rounded-lg text-sm">
-                            "Limited knowledge of world and events after 2021."
+                        <li className="bg-gray-100 p-3 rounded-lg text-sm hidden sm:flex">
+                            "Limited knowledge of world and events."
                         </li>
                     </ul>
                 </div>

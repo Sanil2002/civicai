@@ -16,7 +16,7 @@ export const InputArea: React.FC<InputAreaProps> = ({ inputValue, setInputValue,
         }
       };
 
-    const handleSendMessage = async () => {
+    const handleSendMessage = async (inputValue: string) => {
         if (!inputValue.trim()) return; 
 
         try {
@@ -30,7 +30,7 @@ export const InputArea: React.FC<InputAreaProps> = ({ inputValue, setInputValue,
     };
 
     return (
-        <div className="flex w-[527.778px] lg:w-[795px] h-[46.889px] flex-col justify-center items-start gap-[2.778px] rounded-[19.111px] bg-gray-100 flex-wrap content-center py-[11px] px-[11px]">
+        <div className="flex max-w-[795px] lg:w-[795px] md:w-[595px] h-[46.889px] flex-col justify-center items-start gap-[2.778px] rounded-[19.111px] bg-gray-100 flex-wrap content-center py-[11px] px-[11px]">
             <div className="flex flex-row gap-[8px] min-h-full min-w-full items-center">
                 <div className="w-[30px] h-[30px] flex justify-center items-center cursor-pointer">
                 <Paperclip />
@@ -49,7 +49,7 @@ export const InputArea: React.FC<InputAreaProps> = ({ inputValue, setInputValue,
                         placeholder="Message Civic.ai"
                         className="flex-grow lg:min-w-[567px] min-w-[167px] shrink-0 balance-0 rounded-[8px] font-normal text-[15.722px] bg-gray-100 px-[20px] text-gray-600 focus:outline-none overflow-scroll" />
                 </div>
-                <div className="w-[30px] h-[30px] flex justify-center items-center cursor-pointer" onClick={handleSendMessage}>
+                <div className="w-[30px] h-[30px] flex justify-center items-center cursor-pointer" onClick={() => handleSendMessage(inputValue)}>
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 14 15" fill="#1C1C1C">
                         <path d="M12.1735 6.57378L3.05887 1.37142C2.90524 1.28523 2.72901 1.24783 2.55361 1.26419C2.37821 1.28054 2.21194 1.34987 2.07688 1.46297C1.94182 1.57607 1.84436 1.72758 1.79746 1.89738C1.75056 2.06719 1.75644 2.24724 1.8143 2.41363L3.49616 7.32194C3.49594 7.32374 3.49594 7.32556 3.49616 7.32736C3.49585 7.32916 3.49585 7.33099 3.49616 7.33279L1.8143 12.252C1.76796 12.3828 1.75369 12.5229 1.77269 12.6605C1.7917 12.798 1.84342 12.929 1.92351 13.0424C2.0036 13.1558 2.10973 13.2484 2.233 13.3123C2.35626 13.3762 2.49305 13.4096 2.6319 13.4097C2.78254 13.4093 2.93054 13.3701 3.06159 13.2958L12.1713 8.08474C12.3057 8.00947 12.4176 7.8998 12.4956 7.76698C12.5736 7.63417 12.6148 7.48299 12.6151 7.32897C12.6154 7.17495 12.5747 7.02363 12.4972 6.89053C12.4196 6.75744 12.3081 6.64737 12.174 6.57161L12.1735 6.57378ZM2.6319 12.5417V12.5368L4.2671 7.76736H7.4062C7.52132 7.76736 7.63171 7.72163 7.71311 7.64024C7.79451 7.55884 7.84023 7.44844 7.84023 7.33333C7.84023 7.21822 7.79451 7.10782 7.71311 7.02643C7.63171 6.94503 7.52132 6.8993 7.4062 6.8993H4.27144L2.63515 2.13151L2.6319 2.125L11.7465 7.32411L2.6319 12.5417Z" fill="#1C1C1C"/>
                     </svg> */}

@@ -30,17 +30,8 @@ export const Chat = () => {
         }
     }, [chatHistory]);
 
-    useEffect(() => {
-        if (question) {
-            setInputValue(question); 
-            handleSendClick(); 
-        }
-    }, [question]);
-
-    const handleSendClick = async () => {
-        setLoading(true);
+    const handleSendClick = async (inputValue:string) => {
         if (!inputValue.trim()) return;
-
         const newQuestion = inputValue;
         setLoading(true);
 
@@ -63,6 +54,17 @@ export const Chat = () => {
     };
 
     useEffect(() => {
+        if (question) {
+            const validatedQuestion = question.replace(/[-_]/g, ' ');
+            setInputValue(validatedQuestion); 
+            const sendQuestion = () => {
+                handleSendClick(validatedQuestion);
+            } 
+            sendQuestion();
+        }
+    }, [question]);
+
+    useEffect(() => {
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth',
@@ -75,7 +77,7 @@ export const Chat = () => {
                 <ChatSidebar />
             </div> */}
             <div className="relative flex flex-col w-full">
-                <div className="w-full sticky flex">
+                <div className="sticky border-b shadow-sm flex top-0 bg-white z-50">
                     <ChatNavbar />
                 </div>
                 <div className="flex justify-center items-center px-[19px] s min-h-[748px] ">
@@ -91,9 +93,9 @@ export const Chat = () => {
                                         <div className="items-start">
                                             <strong className="text-gray-700 flex mb-2">assistant:</strong>
                                             <div
-                                                className={`relative text-white flex bg-gradient-to-t from-[#003] to-[#003] rounded-3xl p-3 mt-3 ${loading && index === chatHistory.length - 1 ? 'animate-pulse bg-slate-300 text-transparent w-[75px] h-[48px] bg-none' : ''}`}
+                                                className={`relative text-white flex bg-gradient-to-t from-[#003] to-[#003] rounded-3xl p-3 mt-3 ${!qa.answer && loading && index === chatHistory.length - 1  ? 'animate-pulse bg-slate-300 text-transparent w-[75px] h-[48px] bg-none' : ''}`}
                                             >
-                                                {loading && index === chatHistory.length - 1 ? '' : qa.answer}
+                                                {!qa.answer && loading && index === chatHistory.length - 1 ? '' : qa.answer}
                                             </div>
                                         </div>
                                         </div>
@@ -110,8 +112,8 @@ export const Chat = () => {
 
                         {/* ..............................................................................................................*/}
                     </div>
-                    <div className="flex w-full h-[80.55555px] py-[13.889px] px-[27.778px] flex-col items-center left-0 bottom-0 sticky">
-                        <InputArea inputValue={inputValue} setInputValue={setInputValue} handleSendClick={handleSendClick} />
+                    <div className="flex w-full h-[80.55555px] py-[13.889px] px-[27.778px] flex-col items-center left-0 bottom-0 sticky z-50 bg-white">
+                        <InputArea inputValue={inputValue} setInputValue={setInputValue} handleSendClick={() => handleSendClick(inputValue)} />
                         <div className="text-gray-500 text-[13px]">Civic.ai can make mistakes.Cross-check important info</div>
                     </div>
                 </div>

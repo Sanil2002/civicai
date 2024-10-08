@@ -12,7 +12,7 @@ export const ChatNavbar = () => {
     }
 
     return (
-        <div className="flex max-h-[80px] w-full rounded-[12px] px-[34px] py-[15px] justify-between items-center self-stretch">
+        <div className="flex max-h-[80px] w-[100%] rounded-[12px] px-[34px] py-[15px] justify-between items-center self-stretch">
             <div className="flex items-center gap-[12px]">
                 <div className="w-[32px] h-[32px] flex shrink-0">
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width="46" height="45" viewBox="0 0 46 45" fill="none">
